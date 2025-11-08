@@ -1,0 +1,28 @@
+[project]
+name = "abs-utils"
+version = "0.1.0"
+description = "Shared utilities for abs_notary: async logging, exceptions, crypto, config, validators"
+authors = [
+    {name = "ingmarAvocado"}
+]
+readme = "README.md"
+requires-python = "^3.11"
+dependencies = [
+    "pydantic (>=2.12.4,<3.0.0)",
+    "pydantic-settings (>=2.11.0,<3.0.0)",
+    "python-json-logger (>=4.0.0,<5.0.0)",
+    "starlette (>=0.50.0,<0.51.0)"
+]
+
+
+[build-system]
+requires = ["poetry-core>=2.0.0,<3.0.0"]
+build-backend = "poetry.core.masonry.api"
+
+[tool.poetry.group.dev.dependencies]
+pytest = ">=8.2,<9"
+pytest-asyncio = "^1.2.0"
+black = "^25.9.0"
+ruff = "^0.14.4"
+mypy = "^1.18.2"
+
