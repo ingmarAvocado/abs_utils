@@ -4,13 +4,13 @@ FastAPI middleware for request logging with context injection
 
 import time
 import uuid
-from typing import Callable
+from collections.abc import Callable
+
 from starlette.middleware.base import BaseHTTPMiddleware
 from starlette.requests import Request
 from starlette.responses import Response
 
-from abs_utils.logger.core import get_logger, set_log_context, clear_log_context
-
+from abs_utils.logger.core import clear_log_context, get_logger, set_log_context
 
 logger = get_logger(__name__)
 

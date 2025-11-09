@@ -5,13 +5,14 @@ Core logging functionality with JSON formatting and context injection
 import logging
 import sys
 from typing import Any
+
 from pythonjsonlogger import jsonlogger
 
 
 class ContextFilter(logging.Filter):
     """Add context fields to log records"""
 
-    def __init__(self):
+    def __init__(self) -> None:
         super().__init__()
         self.context: dict[str, Any] = {}
 
@@ -86,6 +87,7 @@ def setup_logging(
     console_handler.setLevel(log_level)
 
     # Set formatter based on format type
+    formatter: logging.Formatter
     if log_format == "json":
         formatter = CustomJsonFormatter(
             "%(timestamp)s %(level)s %(logger)s %(module)s %(function)s %(line)d %(message)s"

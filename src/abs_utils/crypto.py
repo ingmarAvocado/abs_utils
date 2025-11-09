@@ -2,12 +2,10 @@
 Async-compatible cryptographic utilities for hashing, API key generation, etc.
 """
 
+import asyncio
 import hashlib
 import secrets
 from pathlib import Path
-from typing import BinaryIO
-import asyncio
-from functools import partial
 
 
 async def hash_file_async(file_path: str | Path, chunk_size: int = 8192) -> str:
@@ -152,40 +150,3 @@ def generate_api_key(prefix: str = "sk_live") -> tuple[str, str, str]:
     display_prefix = f"{prefix}_{random_part[:8]}"
 
     return full_key, key_hash, display_prefix
-
-
-def hash_password(password: str) -> str:
-    """
-    Hash a password using SHA-256 (NOTE: Use bcrypt in production!)
-
-    Args:
-        password: Plain text password
-
-    Returns:
-        Hashed password
-
-    Note:
-        This is a simple hash for demonstration.
-        In production, use bcrypt/argon2 with proper salting.
-    """
-    import warnings
-
-    warnings.warn(
-        "hash_password uses simple SHA-256. Use bcrypt/passlib in production!",
-        UserWarning,
-    )
-    return hash_string(password)
-
-
-def verify_password(password: str, password_hash: str) -> bool:
-    """
-    Verify password against hash (NOTE: Use bcrypt in production!)
-
-    Args:
-        password: Plain text password
-        password_hash: Hashed password
-
-    Returns:
-        True if password matches, False otherwise
-    """
-    return hash_string(password) == password_hash

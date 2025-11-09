@@ -6,8 +6,8 @@ import re
 from pathlib import Path
 from typing import Any
 
+from abs_utils.constants import MAX_FILE_SIZE, SUPPORTED_FILE_TYPES
 from abs_utils.exceptions import ValidationException
-from abs_utils.constants import SUPPORTED_FILE_TYPES, MAX_FILE_SIZE
 
 
 def validate_email(email: str, raise_exception: bool = True) -> bool:
