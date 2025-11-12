@@ -6,7 +6,7 @@ import logging
 import sys
 from typing import Any
 
-from pythonjsonlogger import jsonlogger
+from pythonjsonlogger import json as pythonjson
 
 
 class ContextFilter(logging.Filter):
@@ -35,7 +35,7 @@ class ContextFilter(logging.Filter):
 _context_filter = ContextFilter()
 
 
-class CustomJsonFormatter(jsonlogger.JsonFormatter):
+class CustomJsonFormatter(pythonjson.JsonFormatter):
     """Custom JSON formatter with standard fields"""
 
     def add_fields(
